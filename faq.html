@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What to Expect – Heartsease</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .faq-page {
+      background: var(--bg-gradient);
+      padding-top: 120px;
+    }
+
+    /* HERO */
+    .faq-hero {
+      width: 68vw;
+      margin: 0 auto;
+      padding: 8vh 0 6vh;
+      text-align: center;
+    }
+
+    .faq-hero h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 4.5vh, 3rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 3vh;
+      line-height: 1.25;
+    }
+
+    .faq-hero-body {
+      font-size: 1.85vh;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .faq-hero-body p { margin-bottom: 1.2vh; }
+
+    .faq-hero-body p:last-child {
+      font-style: italic;
+      color: var(--text-primary);
+      margin-top: 0.5vh;
+    }
+
+    /* SECTIONS CONTAINER */
+    .faq-sections {
+      background: var(--bg-about);
+      padding: 3vh 0 10vh;
+    }
+
+    .faq-inner {
+      width: 68vw;
+      margin: 0 auto;
+    }
+
+    /* ACCORDION ITEM */
+    .faq-item {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--accent-soft);
+      border-radius: 1.4vh;
+      margin-bottom: 1.8vh;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 6px 28px rgba(63, 51, 72, 0.09);
+    }
+
+    .faq-item.open {
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 6px 28px rgba(63, 51, 72, 0.09);
+    }
+
+    /* QUESTION ROW */
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.4vh 2.8vw;
+      cursor: pointer;
+      gap: 2vw;
+      user-select: none;
+    }
+
+    .faq-question-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+    }
+
+    .faq-number {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.6vh;
+      color: var(--purple-muted);
+      font-style: italic;
+      min-width: 2.5vw;
+      flex-shrink: 0;
+    }
+
+    .faq-q-text {
+      font-size: 1.75vh;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    .faq-chevron {
+      font-size: 1.4vh;
+      color: var(--purple-muted);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ANSWER */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 600px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 2.8vw 2.8vh 2.8vw;
+      padding-left: calc(2.8vw + 1.5vw + 2.5vw); /* align with question text */
+    }
+
+    .faq-answer-inner p {
+      font-size: 1.7vh;
+      line-height: 1.8;
+      color: var(--text-primary);
+      margin-bottom: 1.6vh;
+    }
+
+    .faq-answer-inner p:last-child { margin-bottom: 0; }
+
+    .faq-answer-inner ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1vh;
+      margin: 1.2vh 0 1.6vh;
+    }
+
+    .faq-answer-inner ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1vw;
+      font-size: 1.7vh;
+      line-height: 1.65;
+      color: var(--text-primary);
+    }
+
+    .faq-answer-inner ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple-deep);
+      flex-shrink: 0;
+      margin-top: 0.65vh;
+    }
+
+    .faq-answer-inner .faq-note {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 1.6vh;
+    }
+
+    /* DIVIDER between question group types */
+    .faq-section-label {
+      font-size: 1.2vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--purple-muted);
+      margin: 5vh 0 2vh;
+    }
+
+    .faq-section-label:first-child { margin-top: 0; }
+
+    /* CTA STRIP */
+    .faq-cta {
+      background: var(--bg-about);
+      padding: 8vh 0;
+      text-align: center;
+    }
+
+    .faq-cta-inner {
+      width: 55vw;
+      margin: 0 auto;
+    }
+
+    .faq-cta-inner p {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vh, 1.2rem);
+      color: var(--text-primary);
+      line-height: 1.65;
+      margin-bottom: 3.5vh;
+    }
+
+    .faq-cta-btns {
+      display: flex;
+      gap: 2vw;
+      justify-content: center;
+    }
+
+    .book-session-btn { border-radius: 10px; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .faq-hero, .faq-inner { width: 88vw; }
+      .faq-cta-inner { width: 88vw; }
+      .faq-answer-inner { padding-left: 2.8vw; }
+      .faq-question { padding: 2.2vh 4vw; }
+      .faq-number { min-width: 5vw; }
+      .faq-cta-btns { flex-direction: column; align-items: center; gap: 1.5vh; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="main.html">
+            <img src="assets/logo.png" alt="Heartsease Logo" class="logo">
+          </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="main.html#section1">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="main.html#section3">Services</a></li>
+          <li><a href="main.html#section4">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="book-session-btn" id="bookBtn">Book Session</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main class="faq-page">
+    <div class="faq-hero reveal">
+      <span class="t-eyebrow">Before You Begin</span>
+      <h1>What to Expect From Therapy</h1>
+      <div class="faq-hero-body">
+        <p>Starting therapy can feel uncertain — especially if you've never done it before.</p>
+        <p>This page is here to help you know what therapy with me looks like, feels like, and doesn't expect from you.</p>
+        <p>There's no pressure to have the right words.<br>You just need to show up as you are.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FAQ ACCORDION -->
+  <section class="faq-sections">
+    <div class="faq-inner">
+
+      <p class="faq-section-label">About Sessions</p>
+
+      <div class="faq-item" data-index="0">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">01</span>
+            <span class="faq-q-text">How do I prepare for my first therapy session?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Once you book a session:</p>
+            <ul>
+              <li>You'll receive a confirmation with session details</li>
+              <li>Sessions are held online in a private, secure setting</li>
+              <li>You don't need to prepare anything in advance</li>
+            </ul>
+            <p class="faq-note">You don't need a "reason big enough." If something feels heavy, confusing, or unresolved — that's enough.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="1">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">02</span>
+            <span class="faq-q-text">What can I expect during a session?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Therapy is a conversation — but not the kind where you're judged, rushed, or analysed. In sessions, you can expect:</p>
+            <ul>
+              <li>A calm, confidential space</li>
+              <li>Time to speak freely, at your pace</li>
+              <li>Gentle questions that help you reflect</li>
+              <li>Support that feels human, not clinical</li>
+            </ul>
+            <p class="faq-note">There's no pressure to talk nonstop. Silence is welcome too.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="2">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">03</span>
+            <span class="faq-q-text">What will we be working on?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Therapy isn't about fixing you — it's about understanding you. Depending on what you're coming in for, we may:</p>
+            <ul>
+              <li>Explore emotional patterns and triggers</li>
+              <li>Understand how your past affects your present</li>
+              <li>Learn practical tools for regulation and clarity</li>
+              <li>Work on communication, boundaries, or self-trust</li>
+              <li>Slowly move you out of survival mode</li>
+            </ul>
+            <p class="faq-note">Everything is adapted to you. There's no one-size-fits-all approach here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="3">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">04</span>
+            <span class="faq-q-text">What therapy is not</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>To set honest expectations, therapy is not:</p>
+            <ul>
+              <li>A place where you're told what to do</li>
+              <li>A space where you're rushed to "heal faster"</li>
+              <li>A judgement zone or a performance test</li>
+              <li>A quick fix or motivational talk</li>
+            </ul>
+            <p class="faq-note">Therapy is a process. And it works best when it's gentle, consistent, and collaborative.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="4">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">05</span>
+            <span class="faq-q-text">How can I tell if therapy is working for me?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Progress in therapy doesn't always look dramatic. Sometimes it looks like:</p>
+            <ul>
+              <li>Responding instead of reacting</li>
+              <li>Feeling calmer in situations that once overwhelmed you</li>
+              <li>Understanding yourself with less self-blame</li>
+              <li>Making decisions with more clarity</li>
+              <li>Feeling safer in your own mind</li>
+            </ul>
+            <p class="faq-note">Some sessions feel light. Some feel heavy. Both are part of the work.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="faq-section-label" style="margin-top:5vh;">Scheduling & Logistics</p>
+
+      <div class="faq-item" data-index="5">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">06</span>
+            <span class="faq-q-text">How often are sessions?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Most clients start with weekly sessions, especially in the beginning. Over time, this may shift depending on your needs and comfort.</p>
+            <p class="faq-note">Therapy moves at your pace, not a fixed timeline.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="6">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">07</span>
+            <span class="faq-q-text">How long is each therapy session?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Each session is <strong>45–50 minutes</strong> long.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="7">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">08</span>
+            <span class="faq-q-text">How do I schedule an appointment?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Click the <strong>Book a Session</strong> button on the homepage. After filling in some basic details, you can choose your preferred slot and confirm with your preferred method of payment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="8">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">09</span>
+            <span class="faq-q-text">Can I schedule an appointment online?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. You can book an appointment by clicking on the Book a Session button. After booking, you will receive a confirmation email with all session details.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-index="9">
+        <div class="faq-question">
+          <div class="faq-question-left">
+            <span class="faq-number">10</span>
+            <span class="faq-q-text">How soon can I get an appointment?</span>
+          </div>
+          <i class="fa-solid fa-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>The earliest available slot depends on current demand. To check current availability, click the Book a Session button and browse the date strip for open slots.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="faq-cta">
+    <div class="faq-cta-inner reveal">
+      <p>Still have questions? I'm happy to answer them before you book.</p>
+      <div class="faq-cta-btns">
+        <button class="book-session-btn" id="bookCta">Book a Session</button>
+        <a href="main.html" class="secondary-btn">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <div class="footer-logo">H</div>
+        <div>
+          <p class="copyright">© 2023 Heartsease Counseling Services</p>
+          <p class="mission">Supporting emotional clarity with care.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+        <a href="#">Crisis Resources</a>
+      </div>
+      <p class="crisis-note">If you are in immediate crisis, please contact local emergency services.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Accordion ─────────────────────────────────────────────────────────────
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+
+    // ── Book buttons ──────────────────────────────────────────────────────────
+    function goBook() {
+      sessionStorage.setItem('openBooking', '1');
+      window.location.href = 'main.html';
+    }
+
+    document.getElementById('bookBtn').addEventListener('click', goBook);
+    document.getElementById('bookCta').addEventListener('click', goBook);
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────────
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── Mobile menu ───────────────────────────────────────────────────────────
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

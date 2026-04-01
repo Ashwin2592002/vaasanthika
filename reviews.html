@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Reviews – Heartsease</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .reviews-page {
+      background: var(--bg-light);
+      min-height: 100vh;
+      padding-top: 120px;
+    }
+
+    .reviews-hero {
+      background: var(--bg-gradient);
+      padding: 8vh 0 6vh;
+      text-align: center;
+    }
+
+    .reviews-hero h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 4vh, 2.8rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 1.2vh;
+    }
+
+    .reviews-hero p {
+      font-size: clamp(0.82rem, 1.5vh, 0.95rem);
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 4vh;
+    }
+
+    .reviews-stats {
+      display: flex;
+      gap: 2.5vw;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .reviews-stat {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--accent-soft);
+      border-radius: 1.2vh;
+      padding: 2vh 3vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4vh;
+    }
+
+    .reviews-stat-num {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.4rem, 3vh, 2rem);
+      font-weight: 700;
+      color: var(--purple-deep);
+    }
+
+    .reviews-stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .reviews-main {
+      width: 88vw;
+      margin: 0 auto;
+      padding: 6vh 0 10vh;
+    }
+
+.reviews-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5vw;
+      font-size: 1.5vh;
+      color: var(--purple-muted);
+      text-decoration: none;
+      margin-bottom: 3vh;
+      transition: color 0.2s;
+    }
+    .reviews-back:hover { color: var(--purple-deep); }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="main.html">
+            <img src="assets/logo.png" alt="Heartsease Logo" class="logo">
+          </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="main.html#section1">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="main.html#section3">Services</a></li>
+          <li><a href="main.html#section4">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="book-session-btn" id="bookBtn">Book Session</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="reviews-hero">
+    <span class="t-eyebrow">Client Experiences</span>
+    <h1>What people say about their journey</h1>
+    <p>Shared with consent. Every experience is unique and personal.</p>
+    <div class="reviews-stats">
+      <div class="reviews-stat">
+        <span class="reviews-stat-num">2,000+</span>
+        <span class="reviews-stat-lbl">Sessions conducted</span>
+      </div>
+      <div class="reviews-stat">
+        <span class="reviews-stat-num">350+</span>
+        <span class="reviews-stat-lbl">Individuals supported</span>
+      </div>
+      <div class="reviews-stat">
+        <span class="reviews-stat-num" id="totalCount">–</span>
+        <span class="reviews-stat-lbl">Reviews shared</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL REVIEWS -->
+  <main class="reviews-page">
+    <div class="reviews-main">
+      <a href="main.html#section4" class="reviews-back">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </a>
+      <div class="testimonials-masonry" id="allReviewsGrid"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <div class="footer-logo">H</div>
+        <div>
+          <p class="copyright">© 2023 Heartsease Counseling Services</p>
+          <p class="mission">Supporting emotional clarity with care.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+        <a href="#">Crisis Resources</a>
+      </div>
+      <p class="crisis-note">If you are in immediate crisis, please contact local emergency services.</p>
+    </div>
+  </footer>
+
+  <script>
+    const testimonials = [
+      { name: "BJ", descriptor: "Client", date: "Nov 14, 2023", review: "The session was good. The questions raised made me think through few things. One key observation which hit hard. I always thought my issue was. 'When others share their problems to me, i consider it as my problem.' My folks always advice me not to do that. But during the session you pointed out that. 'when others share your problems to you, their problems become more important to you than them.' This is something I really need to work on. Indeed a sharp observation that made me look into few things deeply. Thank you Vaasanthika for that." },
+      { name: "Sandhya Rega", descriptor: "Client", date: "Sep 04, 2023", review: "Hi Vaasanthika, the session was too good. I am able to resonate and understand the reasons for my past behaviours while ur discussion. The mindfulness exercise was so relaxing. I could see a good shift in my mood recently and I feel positive through The verbal affirmation. It helped me so much to do so. Got different perceptive of seeing things nowadays. I will start working on the behaviour affirmations and mindfulness exercise. Thanks a lot!" },
+      { name: "Anonymous", descriptor: "Client", date: "Feb 09, 2025", review: "The session was very comfortable. I felt seen, heard and understood. It was easy to open up to Vaasanthika, she was calm, cordial, knowledgeable and very professional and I'm looking forward to working with her after just one session" },
+      { name: "Janet", descriptor: "Client", date: "Feb 09, 2025", review: "Vasantika - you are very patient and hear me out so carefully. I always had a misconception that I had to take theraphy from someone of my age group or more older than me. But, talking to you has given me a diffrent perception now and I am v glad I met you online. You are very sharp with your words and I feel so relieved when you talk to me. Looking forward for our upcoming sessions." },
+      { name: "Nishita Ganatra", descriptor: "Client", date: "Nov 14, 2023", review: "I really liked how do you set out goals and have strategies to help me to meet them. This is different from my previous therapists as they did not have any practical strategies. I look forward to our next session and hopefully that can create a starting point for me to work with. I personally resonate with your work. I resonated with your Instagram videos and yesterdays session confirmed my belief that you are the right therapist to help me heal. Thank you so much for your work. I am really grateful and I look forward to working with you" },
+      { name: "Anonymous", descriptor: "Client", date: "Nov 14, 2023", review: "Hey, thanks, it was a great session, I am seeing incremental progress in my behaviour. Can I get a time slot next Saturday?" },
+      { name: "Anonymous", descriptor: "Long-term client", date: "Feb 23, 2025", review: "I have been taking the sessions with Ms. Vaasanthika for a long time. It has been a wonderful experience throughout the journey. Her guidance and knowledge has brought positive changes in me. She doesn't only give solutions but makes you understand and realise why it is worth and needful. It has given me a better understanding and perspective towards things in life. Ms. Vaasanthika is a master of her craft. Gratitude!!" },
+      { name: "Namarratha", descriptor: "Client", date: "Feb 09, 2025", review: "Today's session made me calm for a while...I think it would be good to do this activity when my anger bursts... I will definitely try it U really get with my me and my issues quick..thank you for hearing me out" },
+      { name: "Anonymous", descriptor: "Client", date: "Nov 14, 2023", review: "Tq vasantika you are an angel in my life. My life would have certainly not improved without you in areas I approached to you. Your discipline and expertise has saved me so much. I cant believe today I was so much better compared to day 1 of knowing you on session. Keep up the good work and bring healing to many such around us." },
+      { name: "BJBO", descriptor: "Client (1 year)", date: "Jul 24, 2024", review: "I've been with Vaasanthika for almost a year now... I was surprised by how many things I've been able to unravel about myself that had been holding me back. For example, I had no clue that not being able to live up to my parents' expectations was haunting me for years. Through therapy, I reached a point of acceptance, and my relationship with my parents improved significantly. In general, Vaasanthika has helped me let go of things by seeing them from a different perspective. She is extremely polite, listens thoroughly, and offers her suggestions without any judgment." },
+      { name: "innur", descriptor: "Client", date: "Feb 09, 2025", review: "First of all I would like to thank you for all of the help you provided me in better understanding my situation. You are surely a great therapist, all the sessions have helped me to make better decisions in my life particularly in my relationships. I like the clarity you were able to provide and your consistency in holding on to my journey without fail means alot" },
+      { name: "Anonymous", descriptor: "Client", date: "Dec 01, 2023", review: "The session was a profound journey toward self-discovery and emotional healing. The therapist Vasanthika's empathetic approach and keen insights created a safe space for exploration and growth. The guidance offered was invaluable, illuminating paths toward inner peace and a deeper understanding of myself. I left the session feeling supported, empowered, and equipped with valuable tools to navigate life's challenges. Hearts Ease provides a nurturing environment that fosters genuine healing and personal development. Highly recommended for anyone seeking to ease their hearts" },
+      { name: "Anonymous", descriptor: "Client", date: "Sep 04, 2023", review: "Vaasanthika has been wonderful to work with. I feel more comfortable sharing openly in sessions as I know that there are no judgments. But she also helps in confronting difficult emotions in a practical way. Her skills are commendable and I love the way she explains techniques that helps beyond the sessions so that I can use them as tools later. I've really enjoyed my time so far working with her and would strongly recommend her services for anyone who is looking to start their healing journey" },
+      { name: "Anonymous", descriptor: "Client", date: "Nov 14, 2023", review: "Its really the best i could ask for Your energy and everything is wonderful And thank you so much for guiding me to" },
+      { name: "Maheshwari", descriptor: "Client", date: "Nov 14, 2023", review: "The sessions are well structured and designed to reach a goal you set with a therapists. The systematic nature is very useful especially as someone who felt very directionless when I first sought therapy. Useful tools to organize and understand oneself are provided. Learning to use these tools with a therapist makes a lot of difference especially since you understand it deeper. The therapist herself is very objective and tries to understand clearly where we are coming from. She picks up on patterns quickly and gently make us aware of it as well." },
+      { name: "Anonymous", descriptor: "Client", date: "Nov 14, 2023", review: "Thank you Vaasanthika for listening my heart out. Your perspective gave a little better understanding of what I am going through. You are involved in healing me rather than advising me to move on from my current situation. That's the one point I am continuing these sessions." },
+      { name: "Teena Tr", descriptor: "Client", date: "Feb 22, 2025", review: "Thank you for the session it was quite helpful to have insights about my thoughts and feelings" },
+      { name: "Anonymous", descriptor: "Client", date: "Jul 25, 2023", review: "The session is helping me deal with trauma. Based on my sessions so far I can say that the intensity of certain negative feelings have reduced." },
+      { name: "Akshay Jadhav", descriptor: "Client", date: "Feb 25, 2025", review: "The Session has been very helpful to me. I have seen improvement in my productivity and through tools. I am getting better and better." },
+      { name: "Vigasini", descriptor: "Weekly Client", date: "Jun 03, 2025", review: "Well youre an amazing therapist and its so cool how much of a deeper insight you bring in for me to understand myself so much better. I look forward to the sessions every week because of how mentally relaxed I feel after having someone hear me out and help me walk through a path that I seem struggle to navigate. Thank you so so much!" },
+      { name: "Pranav Muniraj", descriptor: "Client", date: "Dec 30, 2025", review: "A calm, patient and a professional therapist. Sessions with Vaasanthika has always brought me Clarity during a Very confusing phase of my life. I always felt comfortable and heard without being judged. Over the course of sessions she helped me gain confidence awareness on my emotional aspects and healthy ways to respond to situations. I am grateful for the support. Thank you Vaasanthika!" },
+      { name: "Adithya S Pillai", descriptor: "Client", date: "Jul 16, 2023", review: "Thanks You Vaasanthika. It was great. You were able to identify what I was trying to say. Thank You so much." },
+      { name: "Farjana Akter", descriptor: "Client", date: "Nov 14, 2023", review: "I feel really relieved after having the conversation with you, and i think I will overcome from all of my issues, confusion and depression" },
+      { name: "Biswas", descriptor: "Client", date: "Apr 26, 2025", review: "My experience has been very good. You understand things deeply and guide according to the situation. I feel truly supported throughout the sessions, Thanks" },
+      { name: "Naaz", descriptor: "Long-term Follower/Client", date: "May 07, 2025", review: "It was really nice talking to you as well and you were obviously better than any therapist I have seen thank you and I really look forward too see you again... I have been following and listening to you for last 2 or 3 years" },
+      { name: "Jayashree", descriptor: "Client", date: "Jul 28, 2023", review: "Firstly, I'm super glad I came across your profile and opted for the therapy sessions. You are asking the right set of questions and make me realise What went wrong... Secondly, I did attend a few therapy sessions before finding you, but I feel much more connected and relieved after attending your sessions. I can't thank you enough for the amazing sessions we had." },
+      { name: "Prachi", descriptor: "First-time Client", date: "Feb 26, 2025", review: "It was a great session. It was my first so I was skeptical about it but it turned out to be really deep and insightful. Looking forward for more sessions" },
+      { name: "Varsha", descriptor: "Client", date: "Apr 24, 2025", review: "A session with you always gives me a better perspective and clarity And you are very good at analysing and imbibing the situation from what one says Thanks vaasanthika:)" },
+      { name: "Amruta", descriptor: "Client", date: "Feb 04, 2025", review: "It was easy for me to share what i am feeling, thanks creating such space. It was a good session definitely felt relieving" },
+      { name: "Jagruthi", descriptor: "Client", date: "May 07, 2025", review: "The session was extremely good with regard to your attention and patience in listening out to me. I feel like heard after ages" },
+      { name: "Kiran", descriptor: "Client", date: "Nov 14, 2023", review: "It was quite amazing talking with you, also the way you heard out everything so calmly and guided to the process was very smooth and understanding. Looking forward for a better healing..." },
+      { name: "Jayasree", descriptor: "Client", date: "Jul 25, 2023", review: "Hey, it was a great session, and the questions you have asked have put my thoughts in perspective and that's exactly what I was looking for thank you" },
+      { name: "niviat_nivetha", descriptor: "Client", date: "Aug 12, 2023", review: "As I have completed my multiple sessions with heartsease and I get the right vibe that i have landed in the right place. All my questions and doubts are addressed in atmost respectful and graceful manner. I feel this is one most important thing when one is going thro a sessions with a therapist." },
+      { name: "Maheshwari", descriptor: "Client", date: "Sep 04, 2023", review: "Thank you so much for this session. It was very cathartic to be able to have a pseudo conversation with someone I wished I could talk to one more time. You rightfully identified the core issues with my approach towards love and romance. There is a lot to unpack here but I think we got started on the right note" },
+      { name: "Anonymous", descriptor: "Client", date: "Jul 25, 2023", review: "Thank you for all the great sessions. You've been understanding me with ease and given me solutions which has been helping me on daily basis. Looking forward to make good progress in my life" },
+      { name: "Anonymous", descriptor: "Client", date: "Sep 12, 2023", review: "firstly thank you so much for taking the time to listen to my concerns and stuff. Secondly, i got to know a different approach to my concerns and how to deal with them now, to more focus out and speak up how i feel, thank you again. And yeah will do those activities that u told me and keep u posted on how it goes." },
+      { name: "O", descriptor: "Client", date: "Nov 14, 2023", review: "Hi Vaasanthika, the session was too good. I am able to resonate and understand the reasons for my past behaviours while ur discussion. The mindfulness exercise was so relaxing. I could see a good shift in my mood recently and I feel positive through The verbal affirmation. It helped me so much to do so. Got different perceptive of seeing things nowadays." },
+      { name: "BJ", descriptor: "Client", date: "Nov 14, 2023", review: "The session was good. The questions raised made me think through few things. One key observation which hit hard. I always thought my issue was. 'When others share their problems to me, i consider it as my problem.' My folks always advice me not to do that. But during the session you pointed out that. 'when others share your problems to you, their problems become more important to you than them.' This is something I really need to work on. Indeed a sharp observation that made me look into few things deeply. Thank you Vaasanthika for that." },
+    ];
+
+    function getInitials(name) {
+      return name.split(/[\s.]+/).filter(Boolean).map(p => p[0]).join('').toUpperCase().slice(0, 2);
+    }
+
+    const grid = document.getElementById('allReviewsGrid');
+    document.getElementById('totalCount').textContent = testimonials.length + '+';
+
+    testimonials.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'testimonial-card';
+      card.innerHTML = `
+        <span class="tc-quote-mark">\u201C</span>
+        <p class="tc-review">${t.review}</p>
+        <div class="tc-person">
+          <div class="tc-initials">${getInitials(t.name)}</div>
+          <div class="tc-meta">
+            <span class="tc-name">${t.name}</span>
+            <span class="tc-descriptor">${t.descriptor} · ${t.date}</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Book Session
+    document.getElementById('bookBtn').addEventListener('click', () => {
+      sessionStorage.setItem('openBooking', '1');
+      window.location.href = 'main.html';
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Mobile menu
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+
+</html>

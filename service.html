@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – Heartsease</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .service-page {
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      padding-top: 120px;
+    }
+
+    /* HERO */
+    .svc-hero {
+      width: 74vw;
+      margin: 0 auto;
+      padding: 8vh 0 6vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: center;
+    }
+
+    .svc-hero-img {
+      width: 100%;
+      height: 52vh;
+      object-fit: cover;
+      border-radius: 0 16vw 16vw 16vw;
+      filter: contrast(0.95) saturate(0.9);
+    }
+
+    .svc-hero-text .svc-eyebrow {
+      font-size: 1.35vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple-muted);
+      margin-bottom: 1.5vh;
+    }
+
+    .svc-hero-text h1 {
+      font-family: "Georgia", serif;
+      font-size: 4.8vh;
+      color: var(--text-primary);
+      margin-bottom: 2.5vh;
+      line-height: 1.2;
+    }
+
+    .svc-hero-text .svc-intro {
+      font-size: 1.9vh;
+      line-height: 1.75;
+      color: var(--text-primary);
+      margin-bottom: 1.8vh;
+    }
+
+    /* TWO-COLUMN WORK & EXPECT */
+    .svc-columns {
+      background: var(--bg-about);
+      padding: 8vh 0;
+    }
+
+    .svc-columns-inner {
+      width: 74vw;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+    }
+
+    .svc-col h2 {
+      font-family: "Georgia", serif;
+      font-size: 2.8vh;
+      color: var(--text-primary);
+      margin-bottom: 3vh;
+    }
+
+    .svc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8vh;
+    }
+
+    .svc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2vw;
+      font-size: 1.75vh;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+
+    .svc-list li::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple-deep);
+      flex-shrink: 0;
+      margin-top: 0.6vh;
+    }
+
+    /* QUOTE / PERSONAL MESSAGE */
+    .svc-quote-section {
+      background: linear-gradient(180deg, #E9E2EF 0%, #CBB9DC 100%);
+      padding: 8vh 0;
+    }
+
+    .svc-quote-inner {
+      width: 60vw;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .svc-quote-inner .q-eyebrow {
+      font-size: 1.35vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--purple-muted);
+      margin-bottom: 3vh;
+    }
+
+    .svc-quote-inner blockquote {
+      font-family: "Georgia", serif;
+      font-size: 2.6vh;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--purple-deep);
+      position: relative;
+      padding: 0 4vw;
+    }
+
+    .svc-quote-inner blockquote::before {
+      content: '\201C';
+      font-size: 8vh;
+      color: var(--purple-muted);
+      opacity: 0.35;
+      position: absolute;
+      top: -2vh;
+      left: 0;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    /* CTA */
+    .svc-cta-section {
+      background: var(--bg-about);
+      padding: 8vh 0;
+      text-align: center;
+    }
+
+    .svc-cta-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2vh;
+    }
+
+    .svc-cta-inner p {
+      font-size: 2vh;
+      color: var(--text-secondary);
+    }
+
+    .svc-cta-btns {
+      display: flex;
+      gap: 2vw;
+      justify-content: center;
+    }
+
+    /* BACK LINK */
+    .svc-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6vw;
+      font-size: 1.55vh;
+      color: var(--purple-muted);
+      text-decoration: none;
+      margin-bottom: 3vh;
+      transition: color 0.2s;
+    }
+
+    .svc-back:hover { color: var(--purple-deep); }
+
+    /* 404 STATE */
+    .svc-not-found {
+      width: 74vw;
+      margin: 0 auto;
+      padding: 12vh 0;
+      text-align: center;
+    }
+
+    .svc-not-found h1 {
+      font-family: "Georgia", serif;
+      font-size: 4vh;
+      color: var(--text-primary);
+      margin-bottom: 2vh;
+    }
+
+    .book-session-btn { border-radius: 10px; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .svc-hero { grid-template-columns: 1fr; padding: 4vh 0 4vh; gap: 3vh; }
+      .svc-hero-img { width: 75vw; height: 38vh; margin: 0 auto; display: block; }
+      .svc-hero-text h1 { font-size: 3.5vh; }
+      .svc-columns-inner { grid-template-columns: 1fr; gap: 4vh; }
+      .svc-quote-inner { width: 88vw; }
+      .svc-quote-inner blockquote { font-size: 2.1vh; }
+      .svc-cta-btns { flex-direction: column; align-items: center; gap: 1.5vh; }
+      .svc-back { font-size: 1.7vh; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="main.html">
+            <img src="assets/logo.png" alt="Heartsease Logo" class="logo">
+          </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="main.html#section1">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="main.html#section3" class="active">Services</a></li>
+          <li><a href="main.html#section4">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="book-session-btn" id="bookBtn">Book Session</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SERVICE CONTENT (rendered by JS) -->
+  <main class="service-page" id="serviceMain"></main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <div class="footer-logo">H</div>
+        <div>
+          <p class="copyright">© 2023 Heartsease Counseling Services</p>
+          <p class="mission">Supporting emotional clarity with care.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+        <a href="#">Crisis Resources</a>
+      </div>
+      <p class="crisis-note">If you are in immediate crisis, please contact local emergency services.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Service data ────────────────────────────────────────────────────────────
+    const SERVICES = {
+      relationship: {
+        title: 'Relationship Counseling',
+        image: 'assets/relationship.jpg',
+        intro: [
+          "This space isn't about blame. It's about clarity, repair, and learning healthier ways to relate."
+        ],
+        workOn: [
+          'Understanding recurring relationship patterns',
+          'Improving communication without fear or shutdown',
+          'Navigating conflict more calmly and respectfully',
+          'Rebuilding trust, emotional safety, and connection',
+          'Learning boundaries without guilt',
+          'Making sense of attachment styles and emotional needs',
+        ],
+        expect: [
+          'A non-judgmental, neutral space',
+          'Honest conversations guided with care',
+          'Practical tools you can use outside sessions',
+          'Support whether you\'re in a relationship, dating, or healing from one',
+        ],
+        quote: "Relationships can bring out our deepest needs and our deepest fears.\nIn these sessions, we slow things down and gently look at what's really happening beneath the surface.\nYou don't have to figure it all out alone — and you don't have to become someone else to be loved.",
+      },
+
+      anxiety: {
+        title: 'Anxiety & Stress Management Counseling',
+        image: 'assets/anxiety.jpg',
+        intro: [
+          "Let's calm your system, understand your triggers, and feel more steady again."
+        ],
+        workOn: [
+          'Identifying stress and anxiety triggers',
+          'Understanding how your nervous system responds',
+          'Learning grounding and regulation techniques',
+          'Managing overthinking and constant worry',
+          'Reducing physical symptoms like restlessness or fatigue',
+          'Creating routines that support calm and balance',
+        ],
+        expect: [
+          'Simple, practical tools (not overwhelming techniques)',
+          'Sessions paced according to your comfort',
+          'A focus on safety, regulation, and relief',
+          'Support that meets you where you are',
+        ],
+        quote: "Anxiety isn't a weakness — it's your system asking for support.\nTogether, we focus on helping your body and mind feel safe again.\nSmall shifts can create big relief, and you don't have to push yourself to heal.",
+      },
+
+      'life-transitions': {
+        title: 'Life Transitions Counseling',
+        image: 'assets/life_transition.jpg',
+        intro: [
+          "Big changes — career shifts, breakups, loss, relocation, or identity changes — can leave you feeling unsteady, even when the change is 'right.'",
+          "Let us help you move through uncertainty with more clarity, confidence, and emotional support."
+        ],
+        workOn: [
+          'Processing change, loss, or uncertainty',
+          'Managing fear of the unknown',
+          'Rebuilding structure during transitions',
+          'Making decisions without overwhelm',
+          'Letting go of old versions of yourself',
+          'Stepping into new roles with confidence',
+        ],
+        expect: [
+          'A supportive space to pause and reflect',
+          'Help making sense of mixed emotions',
+          'Gentle guidance — not pressure — to "move on"',
+          'Clarity without rushing decisions',
+        ],
+        quote: "Transitions can feel unsettling because they ask us to release what's familiar.\nIn therapy, we take this one step at a time — helping you feel grounded while you figure out what's next.\nYou don't need to have it all figured out to begin.",
+      },
+
+      'self-esteem': {
+        title: 'Self-Esteem & Confidence Building',
+        image: 'assets/confidence.png',
+        intro: [
+          "Confidence grows when you feel safe being yourself.",
+          "Low self-esteem often isn't about lack of ability — it's about years of self-doubt, criticism, or comparison. These sessions focus on helping you reconnect with your sense of worth and inner strength."
+        ],
+        workOn: [
+          'Identifying self-critical thought patterns',
+          'Building self-trust and self-respect',
+          'Reducing people-pleasing and guilt',
+          'Strengthening boundaries',
+          'Reconnecting with your values',
+          'Learning to speak up without fear',
+        ],
+        expect: [
+          'Compassion-focused conversations',
+          'Tools to challenge harsh self-talk',
+          'A steady, supportive pace',
+          'Space to rebuild confidence without pressure',
+        ],
+        quote: "Confidence isn't about being loud or fearless.\nIt's about feeling okay being who you are — even on uncertain days.\nMy role is to help you reconnect with that quiet, steady self-belief.",
+      },
+
+      cbt: {
+        title: 'Cognitive Behaviour Therapy (CBT)',
+        image: 'assets/cognitive.jpg',
+        intro: [
+          "Therapy that is structured, supportive, and focused on real-life change."
+        ],
+        workOn: [
+          'Recognising unhelpful thinking patterns',
+          'Understanding emotional reactions',
+          'Learning healthier coping responses',
+          'Breaking cycles of avoidance or rumination',
+          'Practising skills between sessions',
+          'Building long-term emotional resilience',
+        ],
+        expect: [
+          'Clear, goal-oriented sessions',
+          'Tools you can apply daily',
+          'Collaborative work — not rigid rules',
+          'Progress that feels practical and sustainable',
+        ],
+        quote: "CBT isn't about positive thinking — it's about realistic thinking.\nWe work together to understand what's keeping you stuck and gently replace it with responses that actually help.\nThe goal is lasting change, not quick fixes.",
+      },
+
+      grief: {
+        title: 'Grief Counseling',
+        image: 'assets/grief.jpg',
+        intro: [
+          "You don't have to 'move on' to heal.",
+          "Grief doesn't follow timelines. It can come from loss, endings, change, or even things that were never given. Grief counseling offers space to process pain without being rushed or judged."
+        ],
+        workOn: [
+          'Making space for grief and mixed emotions',
+          'Understanding your personal grief process',
+          'Managing guilt, anger, or numbness',
+          'Learning how to carry loss without being consumed by it',
+          'Rebuilding meaning and routine',
+          'Honouring what was lost',
+        ],
+        expect: [
+          'A gentle, compassionate pace',
+          'No pressure to feel "better" quickly',
+          'Emotional safety and understanding',
+          'Support through difficult milestones',
+        ],
+        quote: "Grief asks for patience, not strength.\nIn our sessions, you're allowed to feel everything — without fixing or explaining it away.\nHealing doesn't mean forgetting. It means learning how to live alongside the loss.",
+      },
+    };
+
+    // ── Render ──────────────────────────────────────────────────────────────────
+    function render() {
+      const params  = new URLSearchParams(window.location.search);
+      const key     = params.get('service');
+      const svc     = SERVICES[key];
+      const main    = document.getElementById('serviceMain');
+
+      if (!svc) {
+        main.innerHTML = `
+          <div class="svc-not-found">
+            <h1>Service not found</h1>
+            <p style="font-size:1.8vh;color:var(--text-secondary);margin-bottom:3vh;">
+              The service you're looking for doesn't exist.
+            </p>
+            <a href="main.html#section3" class="primary-btn">Back to Services</a>
+          </div>`;
+        return;
+      }
+
+      document.title = `${svc.title} – Heartsease`;
+
+      const introHTML  = svc.intro.map(p => `<p class="svc-intro">${p}</p>`).join('');
+      const workHTML   = svc.workOn.map(item => `<li>${item}</li>`).join('');
+      const expectHTML = svc.expect.map(item => `<li>${item}</li>`).join('');
+      const quoteHTML  = svc.quote.split('\n').map(line => `${line}<br>`).join('');
+
+      main.innerHTML = `
+        <!-- HERO -->
+        <section class="svc-hero">
+          <div class="reveal">
+            <img class="svc-hero-img" src="${svc.image}" alt="${svc.title}" />
+          </div>
+          <div class="reveal">
+            <a class="svc-back" href="main.html#section3">
+              <i class="fa-solid fa-arrow-left"></i> All Services
+            </a>
+            <p class="svc-eyebrow">Heartsease · Counseling Services</p>
+            <h1>${svc.title}</h1>
+            ${introHTML}
+          </div>
+        </section>
+
+        <!-- WHAT WE WORK ON + WHAT TO EXPECT -->
+        <section class="svc-columns">
+          <div class="svc-columns-inner">
+            <div class="reveal">
+              <h2>What We'll Work On</h2>
+              <ul class="svc-list">${workHTML}</ul>
+            </div>
+            <div class="reveal">
+              <h2>What You Can Expect</h2>
+              <ul class="svc-list">${expectHTML}</ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- PERSONAL MESSAGE -->
+        <section class="svc-quote-section">
+          <div class="svc-quote-inner reveal">
+            <p class="q-eyebrow">A personal note from Vaasanthika</p>
+            <blockquote>${quoteHTML}</blockquote>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="svc-cta-section">
+          <div class="svc-cta-inner reveal">
+            <p>Ready to take the first step? I'm here when you are.</p>
+            <div class="svc-cta-btns">
+              <button class="book-session-btn" id="bookNowCta">Book a Consultation</button>
+              <a href="main.html#section3" class="secondary-btn">Explore Other Services</a>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Scroll reveal
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      // Book CTA → go to main.html and open modal
+      document.getElementById('bookNowCta').addEventListener('click', () => {
+        sessionStorage.setItem('openBooking', '1');
+        window.location.href = 'main.html';
+      });
+    }
+
+    render();
+
+    // ── Navbar Book Session button ────────────────────────────────────────────
+    document.getElementById('bookBtn').addEventListener('click', () => {
+      sessionStorage.setItem('openBooking', '1');
+      window.location.href = 'main.html';
+    });
+
+    // ── Mobile menu ───────────────────────────────────────────────────────────
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks   = document.getElementById('navLinks');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    }
+  </script>
+</body>
+
+</html>

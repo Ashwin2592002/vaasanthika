@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Vaasanthika – Heartsease</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── About Page Specific Styles ── */
+    .about-page {
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      padding-top: 120px;
+    }
+
+    /* HERO INTRO */
+    .about-hero {
+      width: 88vw;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 6vw;
+      align-items: center;
+      padding: 8vh 0 10vh;
+    }
+
+    .about-hero-image img {
+      width: 28vw;
+      height: 55vh;
+      object-fit: cover;
+      border-radius: 0 18vw 18vw 18vw;
+      filter: contrast(0.95) saturate(0.95);
+      background-color: var(--purple-mid);
+    }
+
+    .about-hero-text h1 {
+      font-family: "Georgia", serif;
+      font-size: 5vh;
+      color: var(--text-primary);
+      margin-bottom: 1.2vh;
+    }
+
+    .about-hero-text .role-tag {
+      font-size: 1.8vh;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.8vh;
+    }
+
+    .about-hero-text .trust-badges {
+      font-size: 1.55vh;
+      color: var(--text-trust);
+      margin-bottom: 4vh;
+    }
+
+    .about-hero-text .intro-body {
+      font-size: 1.85vh;
+      line-height: 1.75;
+      color: var(--text-primary);
+      max-width: 44vw;
+      margin-bottom: 2.4vh;
+    }
+
+    .about-hero-cta {
+      display: flex;
+      gap: 2vw;
+      margin-top: 4vh;
+    }
+
+    /* QUOTE BANNER */
+    .quote-banner {
+      background: var(--bg-about);
+      text-align: center;
+    }
+
+    .quote-banner blockquote {
+      font-family: "Georgia", serif;
+      font-size: 2.8vh;
+      font-style: italic;
+      color: var(--purple-deep);
+      max-width: 65vw;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .quote-banner blockquote cite {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-style: normal;
+      font-size: 1.55vh;
+      color: var(--text-muted);
+      margin-top: 2vh;
+      letter-spacing: 0.05em;
+    }
+
+    /* WHY SECTION */
+    .why-section {
+      background: linear-gradient(180deg, #E9E2EF 0%, #EAE4F5 100%);
+      padding: 10vh 0;
+    }
+
+    .why-inner {
+      width: 78vw;
+      margin: 0 auto;
+    }
+
+    .why-inner .section-eyebrow {
+      font-size: 1.4vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple-muted);
+      margin-bottom: 2vh;
+    }
+
+    .why-inner h2 {
+      font-family: "Georgia", serif;
+      font-size: 4vh;
+      color: var(--text-primary);
+      margin-bottom: 4vh;
+      max-width: 55vw;
+    }
+
+    .why-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4vh 6vw;
+    }
+
+    .why-body p {
+      font-size: 1.85vh;
+      line-height: 1.75;
+      color: var(--text-primary);
+    }
+
+    /* QUALIFICATIONS */
+    .quals-section {
+      background: var(--bg-about);
+      padding: 10vh 0;
+    }
+
+    .quals-inner {
+      width: 78vw;
+      margin: 0 auto;
+    }
+
+    .quals-inner .section-eyebrow {
+      font-size: 1.4vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple-muted);
+      margin-bottom: 2vh;
+    }
+
+    .quals-inner h2 {
+      font-family: "Georgia", serif;
+      font-size: 4vh;
+      color: var(--text-primary);
+      margin-bottom: 5vh;
+    }
+
+    .quals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5vh 3vw;
+      margin-bottom: 5vh;
+    }
+
+    .qual-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--accent-soft);
+      border-radius: 1.5vh;
+      padding: 3vh 2.5vw;
+    }
+
+    .qual-card .qual-icon {
+      font-size: 2.4vh;
+      color: var(--purple-deep);
+      margin-bottom: 1.6vh;
+    }
+
+    .qual-card h3 {
+      font-family: "Georgia", serif;
+      font-size: 2vh;
+      color: var(--text-primary);
+      margin-bottom: 0.8vh;
+    }
+
+    .qual-card p {
+      font-size: 1.55vh;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 4vw;
+      margin-top: 2vh;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--accent-soft);
+      border-radius: 1.5vh;
+      padding: 2.5vh 3vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5vh;
+      flex: 1;
+    }
+
+    .stat-item .stat-number {
+      font-family: "Georgia", serif;
+      font-size: 3.5vh;
+      font-weight: 700;
+      color: var(--purple-deep);
+    }
+
+    .stat-item .stat-label {
+      font-size: 1.6vh;
+      color: var(--text-secondary);
+    }
+
+    /* INSPIRATION */
+    .inspiration-section {
+      background: linear-gradient(180deg, #EAE4F5 0%, #CBB9DC 100%);
+      padding: 10vh 0;
+    }
+
+    .inspiration-inner {
+      width: 78vw;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: start;
+    }
+
+    .inspiration-inner .section-eyebrow {
+      font-size: 1.4vh;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple-muted);
+      margin-bottom: 2vh;
+    }
+
+    .inspiration-inner h2 {
+      font-family: "Georgia", serif;
+      font-size: 4vh;
+      color: var(--text-primary);
+      margin-bottom: 3vh;
+    }
+
+    .inspiration-inner p {
+      font-size: 1.85vh;
+      line-height: 1.75;
+      color: var(--text-primary);
+      margin-bottom: 2.4vh;
+    }
+
+    /* CTA CLOSING */
+    .about-cta-section {
+      background: var(--bg-about);
+      padding: 10vh 0;
+      text-align: center;
+    }
+
+    .about-cta-inner {
+      max-width: 55vw;
+      margin: 0 auto;
+    }
+
+    .about-cta-inner p {
+      font-size: 2.2vh;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 4vh;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding: 4vh 0 6vh;
+        gap: 4vh;
+      }
+
+      .about-hero-image img {
+        width: 60vw;
+        height: 40vh;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .about-hero-text h1 { font-size: 3.8vh; }
+      .about-hero-text .intro-body { max-width: 100%; }
+      .about-hero-cta { flex-direction: column; gap: 1.5vh; }
+
+      .why-body { grid-template-columns: 1fr; }
+      .quals-grid { grid-template-columns: 1fr; }
+      .stats-row { flex-direction: column; gap: 2vh; }
+      .inspiration-inner { grid-template-columns: 1fr; }
+      .about-cta-inner { max-width: 90vw; }
+
+      .quote-banner blockquote {
+        max-width: 88vw;
+        font-size: 2.2vh;
+      }
+
+      .why-inner,
+      .quals-inner,
+      .inspiration-inner {
+        width: 88vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="main.html">
+            <img src="assets/logo.png" alt="Heartsease Logo" class="logo">
+          </a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="main.html#section1">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="main.html#section3">Services</a></li>
+          <li><a href="main.html#section4">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="book-session-btn">Book Session</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ABOUT PAGE CONTENT -->
+  <main class="about-page">
+
+    <!-- HERO INTRO -->
+    <section class="about-hero">
+      <div class="about-hero-image reveal">
+        <img src="assets/vasanthika.jpg" alt="Vaasanthika – Clinical Psychologist, Founder of Heartsease" />
+      </div>
+
+      <div class="about-hero-text reveal">
+        <h1>Hi, I'm Vaasanthika.</h1>
+        <p class="role-tag">Clinical Psychologist (MSc) &middot; Founder of Heartsease Counseling Services</p>
+        <p class="trust-badges">Confidential &middot; Trauma-informed &middot; Nervous-system-focused</p>
+
+        <p class="intro-body">
+          I created Heartsease from a simple but deeply personal belief: that healing doesn't happen
+          through force, productivity, or constant self-fixing — it happens through safety, understanding,
+          and consistent emotional care.
+        </p>
+
+        <p class="intro-body">
+          Over the years, I've worked with individuals who look "fine" on the outside but feel exhausted,
+          disconnected, anxious, or stuck on the inside. People who are self-aware, capable, and strong —
+          yet tired of surviving instead of living.
+        </p>
+
+        <div class="about-hero-cta">
+          <a href="main.html#section3" class="secondary-btn">View services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- QUOTE BANNER -->
+  <section class="quote-banner">
+    <blockquote>
+      "To BUILD AGAIN, to be BUILT BETTER, it must be BROKEN in the first place."
+      <cite>— Vaasanthika</cite>
+    </blockquote>
+  </section>
+
+  <!-- MY APPROACH -->
+  <section class="why-section">
+    <div class="why-inner">
+      <p class="section-eyebrow">My Approach</p>
+      <h2>Therapy that goes beyond talking</h2>
+      <div class="why-body">
+        <p>
+          My approach to therapy is trauma-informed and nervous-system-focused. That means we don't
+          just talk about what you're feeling — we work with how your body and mind learned to protect
+          you in the first place.
+        </p>
+        <p>
+          Together, we slow things down, build emotional regulation, unpack relationship patterns, and
+          create change that actually lasts.
+        </p>
+        <p>
+          My work is shaped by lived experience, continuous learning, and the belief that therapy should
+          feel human, collaborative, and grounding — not intimidating or clinical.
+        </p>
+        <p>
+          Heartsease is growing into a space where multiple therapists will offer aligned, ethical, and
+          compassionate care under one shared philosophy — prioritising emotional safety, clarity, and
+          respectful healing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFICATIONS -->
+  <section class="quals-section">
+    <div class="quals-inner">
+      <p class="section-eyebrow">Qualifications &amp; Experience</p>
+      <h2>Grounded in rigorous training</h2>
+
+      <div class="quals-grid">
+
+        <div class="qual-card">
+          <div class="qual-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Master's in Clinical Psychology</h3>
+          <p>Sri Ramachandra Institute of Higher Education and Research, Chennai, Tamil Nadu</p>
+        </div>
+
+        <div class="qual-card">
+          <div class="qual-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h3>Diploma in Life Coaching &amp; Counseling</h3>
+          <p>CCS Academy, Chennai, Tamil Nadu</p>
+        </div>
+
+        <div class="qual-card">
+          <div class="qual-icon"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Bachelor's in Psychology</h3>
+          <p>Women's Christian College, Chennai, Tamil Nadu</p>
+        </div>
+
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">6+</span>
+          <span class="stat-label">Years of academic &amp; theoretical training in psychology</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Years of active clinical practice as a counselling psychologist</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2,000+</span>
+          <span class="stat-label">Therapy sessions conducted with care</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">350+</span>
+          <span class="stat-label">Individuals supported across different concerns</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INSPIRATION -->
+  <section class="inspiration-section">
+    <div class="inspiration-inner">
+      <div class="reveal">
+        <p class="section-eyebrow">The Big Why</p>
+        <h2>What I have learned from my clients</h2>
+        <p>
+          My clients are my greatest inspirations. When I see them grow and challenge themselves,
+          get back on their feet after setbacks — it increases my respect and love for people.
+          It adds more meaning to my craft.
+        </p>
+        <p>
+          Their resilience and strength inspire me to grow alongside them. With much motivation and
+          determination, I constantly improve my skills to provide better and better service.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <p class="section-eyebrow">If you're here</p>
+        <h2>You don't need to have it all figured out.</h2>
+        <p>
+          You just need a space where you can pause, feel safe, and begin again — at your own pace.
+        </p>
+        <p>
+          Heartsease began as my private practice, and it is growing into a space where aligned,
+          ethical, and compassionate care is offered under one shared philosophy. Every therapist
+          associated with Heartsease will be trained to prioritise emotional safety, clarity, and
+          respectful healing.
+        </p>
+        <div class="about-hero-cta">
+          <a href="main.html" class="primary-btn" id="bookConsultBtn">Book a consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <div class="footer-logo">H</div>
+        <div>
+          <p class="copyright">© 2023 Heartsease Counseling Services</p>
+          <p class="mission">Supporting emotional clarity with care.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Confidentiality</a>
+        <a href="#">Crisis Resources</a>
+      </div>
+      <p class="crisis-note">
+        If you are in immediate crisis, please contact local emergency services.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Book consultation → open modal on main.html
+    document.getElementById('bookConsultBtn').addEventListener('click', () => {
+      sessionStorage.setItem('openBooking', '1');
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+
+</html>
